@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX Giphy Button Review</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body id="wholeThing" >
+<!--Instructions for my Gifs-->
+<div class="jumbotron" id="header">
+  <img id="topImageL" src="https://i.imgur.com/RY8fjZD.gif">
+  <img id="topImageC" src="https://i.gifer.com/YsvV.gif">
+  <img id="topImageR" src="https://assets.themuse.com/uploaded/attachments/3741.gif?v=4ab57259c6eefcdc1588f93808a1a5fb6dfad16b2b28f25b7d88a91541f991a8">
+  <h2>Freeze and Unfreeze GIFS</h2>
+  <h4>Click the buttons to display GIPHYs of animals<br>Click on a GIPHY to pause and play<br>
+    Search to add more buttons!</h4>
+</div>
+
+<form class="form-inline" id="animalSearch">
+  <div class="form-group">
+    <label for="animalInput">Add your Animal</label>
+    <input type="text" id="animalInput">
+  </div>
+  <!-- Button prompt an eventListener which is addShow -->
+  <input id="addShow" type="submit" value="submit">
+</form>
+
+<div class="row">
+  <div class="container">
+    <div class="btn-group inline pull-left">
+      <button class="btn btn-primary" id="show" data-search="Cow">Cow</button>
+      <button class="btn btn-primary" id="show" data-search="Squirrel">Squirrel</button>
+      <button class="btn btn-primary" id="show" data-search="Cat">Cat</button>
+      <button class="btn btn-primary" id="show" data-search="Hen">Hen</button>
+
+      <div id="myButtons"></div>
+    </div> <!--end of  the button group -->
+  </div> <!--end of  a container -->
+</div> <!--end of  the row -->
+
+
+<div class="row">
+  <div class="container">
+      <span><div id="gifArea"></div></span>
+  </div> <!--end of a container -->
+</div> <!-- end of the row  -->
+
+
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</body>
+</html>
