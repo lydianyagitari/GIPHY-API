@@ -65,7 +65,7 @@ $(document).ready(function() {
 
     displayButtons();
 
-    //Click event on button with id of "show" executes displayAnimals function
+    //Click event on button with id of "animal" executes displayAnimals function
     $(document).on("click", "#animal", displayAnimals);
 
     //Click event on gifs with class of "animalGiphy" executes pausePlayGifs function
