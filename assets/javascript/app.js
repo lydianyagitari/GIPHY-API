@@ -1,16 +1,16 @@
 $(document).ready(function() {
-    //Array that store our items, animals
-    var topics = [];
+    //array that will be used a bank or storage for the animals we are giphying
+    var gifBank = [];
     
-        //Function with AJAX call to GIPHY 
-        // we have a q parameter for API link set to search term, a limit of 10 results is set
-      
+        
+        
+      //running this function grabs and displays the animal gifs 
          function displayAnimals() {
     
-        var x = $(this).data("search");
-        console.log(x);
-    
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + x + "&api_key=dc6zaTOxFJmzC&limit=10";
+        var j = $(this).data("search");
+        console.log(j);
+    // we have a  parameter for API link set to search term, a limit of 10 results is set
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + j + "&api_key=dc6zaTOxFJmzC&limit=10";
     
         console.log(queryURL);
     //ajax method
@@ -22,45 +22,45 @@ $(document).ready(function() {
                 console.log(results);
                 for (var i = 0; i < results.length; i++) {
                 
-                var showDiv = $("<div class='col-md-4'>");
+                var showDiv = $("<div class='col-md-6'>");
     //declaring variable for rating
                 var rating = results[i].rating;
                 var defaultAnimatedSrc = results[i].images.fixed_height.url;
-                var staticSrc = results[i].images.fixed_height_still.url;
-                var showImage = $("<img>");
+                var staticSource = results[i].images.fixed_height_still.url;
+                var showImg = $("<img>");
                 var p = $("<p>").text("Rating: " + rating);
     
-                showImage.attr("src", staticSrc);
-                showImage.addClass("animalGiphy");
-                showImage.attr("data-state", "still");
-                showImage.attr("data-still", staticSrc);
-                showImage.attr("data-animate", defaultAnimatedSrc);
+                showImg.attr("src", staticSource);
+                showImg.addClass("animalGiphy");
+                showImg.attr("data-state", "still");
+                showImg.attr("data-still", staticSource);
+                showImg.attr("data-animate", defaultAnimatedSrc);
                 showDiv.append(p);
-                showDiv.append(showImage);
+                showDiv.append(showImg);
                 $("#gifArea").prepend(showDiv);
     
             }
         });
     }
     
-      //Submit button click event takes search term from form input, trims and pushes to topics array, displays button
+      //jQuery onClick method that invokes a function to accept input, process it and displays the appended buttons after being pushed to gifBank array
         $("#addShow").on("click", function(event) {
             event.preventDefault();
             var newShow = $("#animalInput").val().trim();
-            topics.push(newShow);
-            console.log(topics);
+            gifBank.push(newShow);
+            console.log(gifBank);
             $("#animalInput").val('');
             displayButtons();
           });
     
-      //Function iterates through topics array to display button with array values in "myButtons" section of HTML
+      //Function iterates through gifBank array to display button with array values in "myButtons" section of HTML
         function displayButtons() {
         $("#myButtons").empty();
-        for (var i = 0; i < topics.length; i++) {
+        for (var i = 0; i < gifBank.length; i++) {
           var a = $('<button class="btn btn-primary">');
           a.attr("id", "show");
-          a.attr("data-search", topics[i]);
-          a.text(topics[i]);
+          a.attr("data-search", gifBank[i]);
+          a.text(gifBank[i]);
           $("#myButtons").append(a);
         }
       }
@@ -74,12 +74,14 @@ $(document).ready(function() {
       //Click event on gifs with class of "netflixGiphy" executes pausePlayGifs function
       $(document).on("click", ".animalGiphy", pausePlayGifs);
     
-      //Function accesses "data-state" attribute and depending on status, changes image source to "data-animate" or "data-still"
+      //Function accesses "data-state" attribute then alters the img source to "data-animate" or "data-still"
       function pausePlayGifs() {
            var state = $(this).attr("data-state");
+           //if img state is still, then animate or play the gif
           if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
+            //else if state is animated then make the gif image still or pause it
           } else {
             $(this).attr("src", $(this).attr("data-still"));
             $(this).attr("data-state", "still");
