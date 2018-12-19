@@ -27,12 +27,10 @@ img {
 }
 
 
-/*Input*/
-
 input.form-control.search {
     width: 50em;
     border-radius: 10px;
-    background-color: #eeeeee;
+    background-color: #f7e5e5;
 }
 
 .searchBtn {
