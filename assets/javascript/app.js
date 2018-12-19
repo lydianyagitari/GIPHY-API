@@ -42,10 +42,10 @@ $(document).ready(function() {
     }
 
     //jQuery onClick method that invokes a function to accept input, process it and displays the appended buttons after being pushed to gifBank array
-    $("#addShow").on("click", function(event) {
+    $("#addAnimal").on("click", function(event) {
         event.preventDefault();
-        var newShow = $("#animalInput").val().trim();
-        gifBank.push(newShow);
+        var newAnimal = $("#animalInput").val().trim();
+        gifBank.push(newAnimal);
         console.log(gifBank);
         $("#animalInput").val('');
         displayButtons();
@@ -56,7 +56,7 @@ $(document).ready(function() {
         $("#myButtons").empty();
         for (var i = 0; i < gifBank.length; i++) {
             var a = $('<button class="btn btn-primary">');
-            a.attr("id", "show");
+            a.attr("id", "animal");
             a.attr("data-search", gifBank[i]);
             a.text(gifBank[i]);
             $("#myButtons").append(a);
@@ -66,7 +66,7 @@ $(document).ready(function() {
     displayButtons();
 
     //Click event on button with id of "show" executes displayAnimals function
-    $(document).on("click", "#show", displayAnimals);
+    $(document).on("click", "#animal", displayAnimals);
 
     //Click event on gifs with class of "animalGiphy" executes pausePlayGifs function
     $(document).on("click", ".animalGiphy", pausePlayGifs);
